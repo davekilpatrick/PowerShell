@@ -16,6 +16,7 @@ Foreach ($line in $content) {
     $url = "https://haveibeenpwned.com/api/breachedaccount/$email"
     #get http content from web
     try {
+        Start-Sleep -Milliseconds 1500 #Sleeping to confirm ton Troy Hunt's future rate limit
         $account =  $request =  Invoke-WebRequest -Uri $url -ErrorAction Stop        
     #strip out the Services comprimsed
     $sites = $account.Content | ForEach-Object {
